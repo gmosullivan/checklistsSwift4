@@ -70,12 +70,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-WI-GOK">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-WI-GOK">
                                                     <rect key="frame" x="8" y="6" width="304" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="done" destination="f0N-7L-979" eventType="editingDidEndOnExit" id="ghw-LD-Vaf"/>
+                                                        <outlet property="delegate" destination="f0N-7L-979" id="zko-0b-ZGQ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -94,12 +98,16 @@
                                 <action selector="cancel" destination="f0N-7L-979" id="gYV-tj-zeS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="NkX-9F-Lai">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="NkX-9F-Lai">
                             <connections>
                                 <action selector="done" destination="f0N-7L-979" id="qqI-2h-y0x"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneBarButton" destination="NkX-9F-Lai" id="uFZ-EH-5tp"/>
+                        <outlet property="textField" destination="LOk-WI-GOK" id="6Ck-1E-6c8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8X-jy-Esw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
