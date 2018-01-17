@@ -1,36 +1,36 @@
 //
-//  ItemDetailViewController.swift
+//  ListDetailViewController.swift
 //  Checklists
 //
-//  Created by Gareth O'Sullivan on 10/01/2018.
+//  Created by Gareth O'Sullivan on 16/01/2018.
 //  Copyright © 2018 Locust Redemption. All rights reserved.
 //
 
 import UIKit
 
-protocol ItemDetailViewControllerDelegate: class {
-    func itemDetailViewControllerDidCancel( _ controller: ItemDetailViewController)
-    func itemDetailViewController ( _ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem)
-    func itemDetailViewController ( _ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem)
+protocol ListDetailViewControllerDelegate: class {
+    func listDetailViewControllerDidCancel( _ controller: ListDetailViewController)
+    func listDetailViewController( _ controller: ListDetailViewController, didFinishAdding checklist: Checklist)
+    func listDetailViewController( _ controller: ListDetailViewController, didFinishEditing checklist: Checklist)
 }
 
-class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
+class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    weak var delegate: ItemDetailViewControllerDelegate?
-    var itemToEdit: ChecklistItem?
+    weak var delegate: ListDetailViewControllerDelegate?
+    var checklistToEdit: Checklist?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let itemToEdit = itemToEdit {
-            title = "Edit Item"
+        if let checklistToEdit = checklistToEdit {
+            title = "Edit Checklist"
+            textField.text = checklistToEdit.name
             doneBarButton.isEnabled = true
-            textField.text = itemToEdit.text
         }
         navigationItem.largeTitleDisplayMode = .never
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -42,17 +42,16 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK:- Actions
     @IBAction func cancel() {
-        delegate?.itemDetailViewControllerDidCancel(self)
+        delegate?.listDetailViewControllerDidCancel(self)
     }
+    
     @IBAction func done() {
-        if let itemToEdit = itemToEdit {
-            itemToEdit.text = textField.text!
-            delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
+        if let checklistToEdit = checklistToEdit {
+            checklistToEdit.name = textField.text!
+            delegate?.listDetailViewController(self, didFinishEditing: checklistToEdit)
         } else {
-            let item = ChecklistItem()
-            item.text = textField.text!
-            item.checked = false
-            delegate?.itemDetailViewController(self, didFinishAdding: item)
+            let checklist = Checklist(name: textField.text!)
+            delegate?.listDetailViewController(self, didFinishAdding: checklist)
         }
     }
     
@@ -69,5 +68,5 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         doneBarButton.isEnabled = !newText.isEmpty
         return true
     }
-
+    
 }
