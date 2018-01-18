@@ -47,6 +47,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F3EB5AF2010A81C008D6E8D /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				7F3EB5AD20108D8C008D6E8D /* DataModel.swift */,
+				7F3EB5A9200BB07D008D6E8D /* Checklist.swift */,
+				7F48E8E720025000007DEFDE /* ChecklistItem.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		7F3EB5B02010A838008D6E8D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7F6069321FF90AAF009E60B2 /* Assets.xcassets */,
+				7F60692F1FF90AAF009E60B2 /* Main.storyboard */,
+				7F6069341FF90AAF009E60B2 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7F3EB5B12010A843008D6E8D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7F48E8EB200BA3BC007DEFDE /* AllListsViewController.swift */,
+				7F3EB5AB200DE7FE008D6E8D /* ListDetailViewController.swift */,
+				7F60692D1FF90AAF009E60B2 /* ChecklistViewController.swift */,
+				7F48E8E92006030A007DEFDE /* ItemDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		7F60691F1FF90AAF009E60B2 = {
 			isa = PBXGroup;
 			children = (
@@ -66,17 +97,10 @@
 		7F60692A1FF90AAF009E60B2 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
+				7F3EB5AF2010A81C008D6E8D /* Data Models */,
+				7F3EB5B12010A843008D6E8D /* View Controllers */,
+				7F3EB5B02010A838008D6E8D /* Resources */,
 				7F60692B1FF90AAF009E60B2 /* AppDelegate.swift */,
-				7F3EB5AD20108D8C008D6E8D /* DataModel.swift */,
-				7F3EB5A9200BB07D008D6E8D /* Checklist.swift */,
-				7F48E8E720025000007DEFDE /* ChecklistItem.swift */,
-				7F48E8EB200BA3BC007DEFDE /* AllListsViewController.swift */,
-				7F3EB5AB200DE7FE008D6E8D /* ListDetailViewController.swift */,
-				7F60692D1FF90AAF009E60B2 /* ChecklistViewController.swift */,
-				7F48E8E92006030A007DEFDE /* ItemDetailViewController.swift */,
-				7F60692F1FF90AAF009E60B2 /* Main.storyboard */,
-				7F6069321FF90AAF009E60B2 /* Assets.xcassets */,
-				7F6069341FF90AAF009E60B2 /* LaunchScreen.storyboard */,
 				7F6069371FF90AAF009E60B2 /* Info.plist */,
 			);
 			path = Checklists;
