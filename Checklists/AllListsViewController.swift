@@ -14,21 +14,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var list = Checklist(name: "Monday")
-        lists.append(list)
-        list = Checklist(name: "Tuesday")
-        lists.append(list)
-        list = Checklist(name: "Wednesday")
-        lists.append(list)
-        list = Checklist(name: "Thursday")
-        lists.append(list)
-        list = Checklist(name: "Friday")
-        lists.append(list)
-        list = Checklist(name: "Saturday")
-        lists.append(list)
-        list = Checklist(name: "Sunday")
-        lists.append(list)
         navigationController?.navigationBar.prefersLargeTitles = true
+        loadChecklists()
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,6 +94,38 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
             return cell
         } else {
             return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+        }
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(paths[0])
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklists() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(lists)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding item array!")
+        }
+    }
+    
+    func loadChecklists() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                lists = try decoder.decode([Checklist].self, from: data)
+            } catch {
+                print("Error decoding item array!")
+            }
         }
     }
 
