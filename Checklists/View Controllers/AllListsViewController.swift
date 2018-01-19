@@ -17,6 +17,11 @@ class AllListsViewController: UITableViewController, UINavigationControllerDeleg
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.delegate = self
@@ -39,7 +44,15 @@ class AllListsViewController: UITableViewController, UINavigationControllerDeleg
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = makeCell(for: tableView)
         let checklist = dataModel.lists[indexPath.row]
+        let count = checklist.countUncheckedItems()
         cell.textLabel!.text = checklist.name
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "No Items"
+        } else if count == 0 {
+            cell.detailTextLabel!.text = "All Done!"
+        } else {
+            cell.detailTextLabel!.text = "\(count) Remaining"
+        }
         cell.accessoryType = .detailDisclosureButton
         return cell
     }
@@ -109,7 +122,7 @@ class AllListsViewController: UITableViewController, UINavigationControllerDeleg
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             return cell
         } else {
-            return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+            return UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
     }
     

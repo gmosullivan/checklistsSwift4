@@ -64,21 +64,6 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
     }
     
-    // MARK:- Private Methods
-    func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
-        let label = cell.viewWithTag(1000) as! UILabel
-        label.text = item.text
-    }
-    
-    func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
-        let label = cell.viewWithTag(1001) as! UILabel
-        if item.checked {
-            label.text = "√"
-        } else {
-            label.text = ""
-        }
-    }
-    
     // MARK:- ItemDetailViewController Delegates
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
@@ -101,6 +86,21 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             }
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK:- Private Methods
+    func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = item.text
+    }
+    
+    func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
+        let label = cell.viewWithTag(1001) as! UILabel
+        if item.checked {
+            label.text = "√"
+        } else {
+            label.text = ""
+        }
     }
     
 }
