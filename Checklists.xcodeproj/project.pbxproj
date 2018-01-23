@@ -18,6 +18,7 @@
 		7F6069311FF90AAF009E60B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F60692F1FF90AAF009E60B2 /* Main.storyboard */; };
 		7F6069331FF90AAF009E60B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6069321FF90AAF009E60B2 /* Assets.xcassets */; };
 		7F6069361FF90AAF009E60B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6069341FF90AAF009E60B2 /* LaunchScreen.storyboard */; };
+		7FD0F5FD2013740A0037513A /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0F5FC2013740A0037513A /* IconPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		7F6069321FF90AAF009E60B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6069351FF90AAF009E60B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6069371FF90AAF009E60B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FD0F5FC2013740A0037513A /* IconPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		7F60691F1FF90AAF009E60B2 = {
 			isa = PBXGroup;
 			children = (
+				7FD0F5FC2013740A0037513A /* IconPickerViewController.swift */,
 				7F60692A1FF90AAF009E60B2 /* Checklists */,
 				7F6069291FF90AAF009E60B2 /* Products */,
 			);
@@ -181,6 +184,7 @@
 				7F60692E1FF90AAF009E60B2 /* ChecklistViewController.swift in Sources */,
 				7F3EB5AC200DE7FE008D6E8D /* ListDetailViewController.swift in Sources */,
 				7F48E8EA2006030A007DEFDE /* ItemDetailViewController.swift in Sources */,
+				7FD0F5FD2013740A0037513A /* IconPickerViewController.swift in Sources */,
 				7F3EB5AA200BB07D008D6E8D /* Checklist.swift in Sources */,
 				7F48E8E820025000007DEFDE /* ChecklistItem.swift in Sources */,
 				7F3EB5AE20108D8C008D6E8D /* DataModel.swift in Sources */,

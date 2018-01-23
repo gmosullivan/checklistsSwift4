@@ -53,6 +53,7 @@ class AllListsViewController: UITableViewController, UINavigationControllerDeleg
         } else {
             cell.detailTextLabel!.text = "\(count) Remaining"
         }
+        cell.imageView!.image = UIImage(named: checklist.iconName)
         cell.accessoryType = .detailDisclosureButton
         return cell
     }
@@ -94,25 +95,19 @@ class AllListsViewController: UITableViewController, UINavigationControllerDeleg
         }
     }
     
-    // MARK:- ListDetailViewController Delegates
+    // MARK:- List Detail View Controller Delegates
     func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
-        let newRowIndex = dataModel.lists.count
         dataModel.lists.append(checklist)
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
+        dataModel.sortChecklists()
+        tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist) {
-        if let index = dataModel.lists.index(of: checklist) {
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.textLabel!.text = checklist.name
-            }
-        }
+        dataModel.sortChecklists()
+        tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
     
