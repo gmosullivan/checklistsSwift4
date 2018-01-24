@@ -42,7 +42,7 @@ class DataModel {
             let data = try encoder.encode(lists)
             try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
         } catch {
-            print("Error encoding item array!")
+            // do nothing
         }
     }
     
@@ -54,7 +54,7 @@ class DataModel {
                 lists = try decoder.decode([Checklist].self, from: data)
                 sortChecklists()
             } catch {
-                print("Error decoding item array!")
+                // do nothing
             }
         }
     }
